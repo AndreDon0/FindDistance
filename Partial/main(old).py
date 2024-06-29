@@ -2,23 +2,12 @@ import numpy as np
 from scipy.integrate import solve_ivp
 import matplotlib.pyplot as plt
 from sympy import symbols, diff, sin, cos, simplify, Matrix
-from surface import SurfaceSecondOrder
-
-B = np.array([
-    [1, 0, 0, 0],
-    [0, 1, 0, 0],
-    [0, 0, 1, 0],
-    [0, 0, 0, 1]
-])
-
-
-S = SurfaceSecondOrder(B)
 
 # Шаг 1: Параметризация поверхности (сфера для примера)
 u, v = symbols('u v')
-x, y, z = S.parameterization(u, v)
-
-print(x, y, z)
+x = sin(u) * cos(v)
+y = sin(u) * sin(v)
+z = cos(u)
 
 # Вычисляем частные производные
 r_u = [diff(x, u), diff(y, u), diff(z, u)]
